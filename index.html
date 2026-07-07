@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberTwin AI - Think Before You Trust</title>
+    <meta name="description" content="CyberTwin AI is an AI-powered Explainable Trust Layer for emails, links, QR codes, and digital communication. Think Before You Trust.">
+    <meta name="keywords" content="cybersecurity, AI, trust layer, email security, phishing detection, QR code scanner, spam filter">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="CyberTwin AI - Think Before You Trust">
+    <meta property="og:description" content="AI-powered Explainable Trust Layer for emails, links, QR codes, and digital communication.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/og-image.png">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CyberTwin AI - Think Before You Trust">
+    <meta name="twitter:description" content="AI-powered Explainable Trust Layer for digital communication.">
+    <meta name="twitter:image" content="assets/og-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <svg class="loader-logo" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="45" stroke="url(#loader-gradient)" stroke-width="2" class="loader-circle"/>
+                <path d="M50 20 L50 50 L70 60" stroke="url(#loader-gradient)" stroke-width="3" stroke-linecap="round" class="loader-check"/>
+                <defs>
+                    <linearGradient id="loader-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#8B5CF6"/>
+                        <stop offset="100%" stop-color="#3B82F6"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <p class="loader-text">CyberTwin AI</p>
+        </div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles" class="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" fill="none" class="logo-icon">
+                    <circle cx="20" cy="20" r="18" stroke="url(#logo-grad)" stroke-width="2"/>
+                    <path d="M20 10 L20 20 L28 24" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8B5CF6"/>
+                            <stop offset="100%" stop-color="#3B82F6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">CyberTwin</span>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#extension" class="nav-link">Extension</a></li>
+                <li><a href="#github" class="nav-link">GitHub</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="status-indicator"></span>
+                <span>Hackathon Prototype</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="gradient-text">CyberTwin AI</span>
+            </h1>
+            <p class="hero-tagline">Think Before You Trust.</p>
+            <p class="hero-description">
+                CyberTwin AI is an Explainable AI Trust Layer that helps users make safer decisions by analyzing emails, senders, links, QR codes, authentication, reputation, and behavior before they interact with them.
+            </p>
+            <div class="hero-cta">
+                <a href="#extension" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    Download Extension
+                </a>
+                <a href="https://github.com/Codexia-afk/Cybertwin_Crazybuild" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Acess Github
+                </a>
+                
+                </a>
+            </div>
+            
+            <!-- Status Banner -->
+            <div class="status-banner">
+                <div class="status-item">
+                    <span class="status-icon warning">🚧</span>
+                    <div>
+                        <strong>Currently Under Review</strong>
+                        <span>Extension Preview Available</span>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon info">🔬</span>
+                    <div>
+                        <strong>AI Model Experimental</strong>
+                        <span>Hackathon Prototype</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Cards -->
+        <div class="floating-cards">
+            <div class="float-card card-1">
+                <div class="card-icon trust">✓</div>
+                <div class="card-content">
+                    <span class="card-label">Trust Score</span>
+                    <span class="card-value">94%</span>
+                </div>
+            </div>
+            <div class="float-card card-2">
+                <div class="card-icon warning">!</div>
+                <div class="card-content">
+                    <span class="card-label">Links Scanned</span>
+                    <span class="card-value">12</span>
+                </div>
+            </div>
+            <div class="float-card card-3">
+                <div class="card-icon ai">AI</div>
+                <div class="card-content">
+                    <span class="card-label">AI Analysis</span>
+                    <span class="card-value">Active</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Features</span>
+                <h2 class="section-title">AI-Powered Trust Layer</h2>
+                <p class="section-description">Comprehensive security analysis powered by explainable artificial intelligence.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Explainable AI Trust Score</h3>
+                    <p>Transparent scoring system with clear reasoning for every decision.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Dynamic AI Trust Graph</h3>
+                    <p>Visual representation of trust relationships and confidence levels.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                    </div>
+                    <h3>AI Decision Replay</h3>
+                    <p>Step-by-step breakdown of how the AI reached its conclusion.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m4.22-10.22l4.24-4.24M6.34 6.34L2.1 2.1m17.8 17.8l-4.24-4.24M6.34 17.66l-4.24 4.24M23 12h-6m-6 0H1m20.07-4.93l-4.24 4.24M6.34 6.34l-4.24-4.24"/></svg>
+                    </div>
+                    <h3>Interactive Trust Graph</h3>
+                    <p>Explore connections between senders, domains, and reputation data.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Organization Trust</h3>
+                    <p>Verify organizational legitimacy and domain authenticity.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Sender Verification</h3>
+                    <p>Multi-layered sender identity validation and reputation analysis.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Domain Intelligence</h3>
+                    <p>Deep domain analysis including age, reputation, and threat history.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>SPF/DKIM/DMARC Analysis</h3>
+                    <p>Complete email authentication protocol verification.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>Threat Intelligence</h3>
+                    <p>Real-time threat data from multiple security sources.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 2v10h10"/></svg>
+                    </div>
+                    <h3>CyberTwin Memory</h3>
+                    <p>Learn from past interactions to improve future predictions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>What If I Click?</h3>
+                    <p>Simulate potential outcomes before interacting with suspicious content.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3>Attack Journey Visualization</h3>
+                    <p>See the complete path an attacker might take.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <h3>Prediction Engine</h3>
+                    <p>Proactive threat detection using behavioral patterns.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Social Engineering Detection</h3>
+                    <p>Identify manipulation tactics and psychological triggers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>
+                    </div>
+                    <h3>QR Code Analysis</h3>
+                    <p>Decode and analyze QR codes for malicious destinations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3>Scam Classification</h3>
+                    <p>Categorize threats by type: phishing, malware, fraud, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Process</span>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-description">Eight layers of AI-powered analysis in milliseconds.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-step" data-step="1">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Receive Email</h3>
+                        <p>CyberTwin activates when you open an email in Gmail.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="2">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Analyze Sender</h3>
+                        <p>Verify sender identity and reputation history.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="3">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Verify Authentication</h3>
+                        <p>Check SPF, DKIM, and DMARC records.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="4">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Inspect Links</h3>
+                        <p>Scan all URLs for malicious destinations.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="5">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3>Analyze Content</h3>
+                        <p>AI reads and understands email context.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="6">
+                    <div class="step-number">06</div>
+                    <div class="step-content">
+                        <h3>Threat Intelligence</h3>
+                        <p>Cross-reference with global threat databases.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="7">
+                    <div class="step-number">07</div>
+                    <div class="step-content">
+                        <h3>AI Reasoning</h3>
+                        <p>Generate explainable trust assessment.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="8">
+                    <div class="step-number">08</div>
+                    <div class="step-content">
+                        <h3>Trust Score & Recommendation</h3>
+                        <p>Display clear actionable guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Dashboard</span>
+                <h2 class="section-title">Live Extension Preview</h2>
+                <p class="section-description">See what CyberTwin displays inside your Gmail.</p>
+            </div>
+            
+            <div class="dashboard-preview">
+                <div class="dashboard-frame">
+                    <div class="dashboard-header">
+                        <div class="dashboard-tabs">
+                            <span class="tab active">Trust Analysis</span>
+                            <span class="tab">AI Reasoning</span>
+                            <span class="tab">Attack Journey</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="trust-score-display">
+                            <div class="score-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#1a1a2e" stroke-width="8"/>
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#score-gradient)" stroke-width="8" 
+                                            stroke-dasharray="283" stroke-dashoffset="17" stroke-linecap="round"
+                                            class="score-progress"/>
+                                    <defs>
+                                        <linearGradient id="score-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#10B981"/>
+                                            <stop offset="100%" stop-color="#3B82F6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <div class="score-value">94</div>
+                                <div class="score-label">Trust Score</div>
+                            </div>
+                            <div class="score-details">
+                                <div class="detail-item safe">
+                                    <span class="detail-icon">✓</span>
+                                    <span>Domain verified</span>
+                                </div>
+                                <div class="detail-item safe">
+                                    <span class="detail-icon">✓</span>
+                                    <span>SPF/DKIM valid</span>
+                                </div>
+                                <div class="detail-item warning">
+                                    <span class="detail-icon">!</span>
+                                    <span>New sender (3 days)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-reasoning">
+                            <h4>AI Analysis</h4>
+                            <p>This email appears legitimate. The sender domain matches the organization, authentication protocols are properly configured, and content analysis shows no social engineering indicators. However, this is a new sender account created recently.</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="dashboard-note">Live data shown inside the extension</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extension Section -->
+    <section id="extension" class="extension">
+        <div class="container">
+            <div class="extension-card">
+                <div class="extension-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </div>
+                <h2>Chrome Extension</h2>
+                <div class="extension-status">
+                    <span class="status-dot warning"></span>
+                    <span>Under Review</span>
+                </div>
+                <p class="extension-description">Not publicly available yet. Download the preview version below.</p>
+                
+                <div class="extension-actions">
+                    <a href="#" class="btn btn-primary btn-large" id="downloadExtension">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Extension
+                    </a>
+                </div>
+                
+                <div class="installation-guide">
+                    <h4>Installation Guide</h4>
+                    <ol>
+                        <li>Enable Developer Mode in Chrome Extensions</li>
+                        <li>Load Unpacked Extension</li>
+                        <li>Open Gmail</li>
+                        <li>Scan Emails Automatically</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github" class="github-section">
+        <div class="container">
+            <div class="github-card">
+                <div class="github-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </div>
+                <h2>Open Source</h2>
+                <p>Transparent, auditable, community-driven security.</p>
+                
+                <div class="github-links">
+                    <a href="https://github.com/Codexia-afk/Cybertwin_Crazybuild" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <span>Repository</span>
+                    </a>
+                    <a href="https://github.com/Codexia-afk/Cybertwin_Crazybuild#readme" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <span>Documentation</span>
+                    </a>
+                    <a href="https://github.com/Codexia-afk/Cybertwin_Crazybuild/issues" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <span>Issues</span>
+                    </a>
+                    <a href="https://github.com/Codexia-afk/Cybertwin_Crazybuild#roadmap" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <span>Roadmap</span>
+                    </a>
+                </div>
+                
+                <a href="https://github.com/Codexia-afk/Cybertwin_Crazybuild" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why CyberTwin -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Comparison</span>
+                <h2 class="section-title">Why CyberTwin?</h2>
+                <p class="section-description">Beyond traditional spam filters.</p>
+            </div>
+            
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="comparison-col">Feature</div>
+                    <div class="comparison-col traditional">Traditional Filters</div>
+                    <div class="comparison-col cybertwin">CyberTwin AI</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Detection Method</div>
+                    <div class="comparison-col traditional">Static rules, keywords</div>
+                    <div class="comparison-col cybertwin">Explainable AI</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Trust Visualization</div>
+                    <div class="comparison-col traditional">Binary: Spam/Not Spam</div>
+                    <div class="comparison-col cybertwin">Dynamic Trust Graph</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Transparency</div>
+                    <div class="comparison-col traditional">Black box decisions</div>
+                    <div class="comparison-col cybertwin">Decision Replay</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Prediction</div>
+                    <div class="comparison-col traditional">Reactive only</div>
+                    <div class="comparison-col cybertwin">Proactive threat prediction</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Memory</div>
+                    <div class="comparison-col traditional">No learning</div>
+                    <div class="comparison-col cybertwin">AI Memory & adaptation</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Organization Trust</div>
+                    <div class="comparison-col traditional">Not available</div>
+                    <div class="comparison-col cybertwin">Full domain intelligence</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Simulation</div>
+                    <div class="comparison-col traditional">Not available</div>
+                    <div class="comparison-col cybertwin">"What If I Click?"</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Attack Visualization</div>
+                    <div class="comparison-col traditional">Not available</div>
+                    <div class="comparison-col cybertwin">Attack Journey Map</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-col">Privacy</div>
+                    <div class="comparison-col traditional">Often stores emails</div>
+                    <div class="comparison-col cybertwin">Privacy-first design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="privacy">
+        <div class="container">
+            <div class="privacy-content">
+                <div class="privacy-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h2>Privacy First</h2>
+                <p>CyberTwin prioritizes user privacy above all else. Raw email content is not permanently stored. Only essential metadata is retained for analysis. AI explanations remain transparent. Users remain in control of their data.</p>
+                <div class="privacy-features">
+                    <div class="privacy-feature">
+                        <span class="privacy-check">✓</span>
+                        <span>No raw email storage</span>
+                    </div>
+                    <div class="privacy-feature">
+                        <span class="privacy-check">✓</span>
+                        <span>Local processing first</span>
+                    </div>
+                    <div class="privacy-feature">
+                        <span class="privacy-check">✓</span>
+                        <span>User-controlled data</span>
+                    </div>
+                    <div class="privacy-feature">
+                        <span class="privacy-check">✓</span>
+                        <span>Transparent AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">FAQ</span>
+                <h2 class="section-title">Common Questions</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is CyberTwin AI?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>CyberTwin AI is an AI-powered Explainable Trust Layer that analyzes emails, links, QR codes, and digital communications to help users make safer decisions before interacting with potentially harmful content.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does the Trust Score work?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The Trust Score is calculated using multiple factors: sender authentication (SPF/DKIM/DMARC), domain reputation, content analysis, threat intelligence, and behavioral patterns. Each factor contributes to a comprehensive 0-100 score with detailed explanations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is my email stored?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. CyberTwin uses a privacy-first design. Raw email content is analyzed locally and not permanently stored. Only essential metadata is retained temporarily for threat analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Does it support Gmail?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, CyberTwin currently supports Gmail through a Chrome extension. Support for additional email providers is on our roadmap.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I contribute?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! CyberTwin is open source. Check our GitHub repository for contribution guidelines, open issues, and our development roadmap.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is it open source?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, CyberTwin is fully open source under the MIT license. We believe security tools should be transparent and auditable by the community.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I install the extension?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The extension is currently under review for the Chrome Web Store. You can download the preview version from this website and install it in developer mode.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Team</span>
+                <h2 class="section-title">Built by Gublet Gang</h2>
+                <p class="section-description">A team passionate about democratizing cybersecurity.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card mission">
+                    <div class="team-icon">🎯</div>
+                    <h3>Mission</h3>
+                    <p>To make AI-powered security accessible to everyone through transparent, explainable technology.</p>
+                </div>
+                
+                <div class="team-card vision">
+                    <div class="team-icon">🔮</div>
+                    <h3>Vision</h3>
+                    <p>A future where users can trust their digital interactions without needing a PhD in cybersecurity.</p>
+                </div>
+                
+                <div class="team-card project">
+                    <div class="team-icon">🏆</div>
+                    <h3>Hackathon Project</h3>
+                    <p>Built with passion for innovation and a commitment to solving real security challenges.</p>
+                </div>
+                
+                <div class="team-card roadmap">
+                    <div class="team-icon">🚀</div>
+                    <h3>Future Roadmap</h3>
+                    <p>Expanding to more platforms, deeper AI capabilities, and broader threat coverage.</p>
+                </div>
+            </div>
+            
+            <div class="team-members">
+                <h3>Team Members</h3>
+                <p class="team-placeholder">Team member details coming soon</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Contact</span>
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
+            
+            <div class="contact-links">
+                <a href="https://github.com/Codexia-afk/Cybertwin_Crazybuild" target="_blank" rel="noopener noreferrer" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="#" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    Email
+                </a>
+                <a href="#" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="#" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    Twitter/X
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg viewBox="0 0 40 40" fill="none" class="footer-logo">
+                        <circle cx="20" cy="20" r="18" stroke="url(#footer-grad)" stroke-width="2"/>
+                        <path d="M20 10 L20 20 L28 24" stroke="url(#footer-grad)" stroke-width="2.5" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="footer-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8B5CF6"/>
+                                <stop offset="100%" stop-color="#3B82F6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div>
+                        <h3>CyberTwin AI</h3>
+                        <p>Think Before You Trust.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#extension">Extension</a>
+                    <a href="#github">GitHub</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Built with ❤️ by Gublet Gang</p>
+                <p>Hackathon Prototype • Privacy-first • Open Source</p>
+                <p class="copyright">© 2025 CyberTwin AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
